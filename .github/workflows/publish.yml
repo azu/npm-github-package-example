@@ -18,10 +18,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-          npm-registry:
-            - registry: 'https://npm.pkg.github.com'
-              scope: '@azu'
-              token: '${{secrets.GITHUB_TOKEN}}'
+          registry-url: 'https://npm.pkg.github.com'
+          always-auth: false
+          scope: '@azu'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN_NPM }}
       - name: install
         run: npm install
       - name: test
