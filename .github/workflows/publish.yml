@@ -27,7 +27,7 @@ jobs:
         run: npm test
       - name: Publish
         run: |
-          can-npm-publish --verbose && npm publish
+          can-npm-publish --verbose && npm publish || echo "Does not publish"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: package-version-to-git-tag

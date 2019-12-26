@@ -43,7 +43,7 @@ jobs:
       # Publish to npm if this version is not published
       - name: Publish
         run: |
-          can-npm-publish --verbose && npm publish
+          can-npm-publish --verbose && npm publish || echo "Does not publish"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Push tag to GitHub if the version's tag is not tagged
@@ -53,7 +53,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
           git_commit_sha: ${{ github.sha }}
-
 ```
 
 ## Install
