@@ -1,5 +1,5 @@
 {
-  "name": "npm-github-package-example",
+  "name": "@azu/npm-github-package-example",
   "version": "1.0.0",
   "description": "npm registry to GitHub Package Registry example.",
   "keywords": [
@@ -64,5 +64,9 @@
     "ts-node": "^8.5.4",
     "ts-node-test-register": "^8.0.1",
     "typescript": "^3.7.4"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
   }
 }
