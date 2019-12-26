@@ -2,6 +2,14 @@
 
 npm registry to GitHub Package Registry example.
 
+This repository test for GitHub Workflow.
+
+## Release Workflow
+
+1. [Manual] Update Version: `npm vession {patch,minor,major}`
+2. [Manual] Push: `git push`
+3. [CI] Publish to npm and Push a tag to GitHub  
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
