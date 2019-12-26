@@ -6,7 +6,7 @@ npm registry to GitHub Package Registry example.
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install npm-github-package-example
+    npm install @azu/npm-github-package-example
 
 ## Usage
 
