@@ -11,7 +11,7 @@ Install with [npm](https://www.npmjs.com/):
 ## Usage
 
 ```js
-import { hello } from "npm-github-package-example"
+import { hello } from "@azu/npm-github-package-example"
 hello("john"); // => "Hello, john"
 ```
 
