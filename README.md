@@ -10,7 +10,10 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
-- [ ] Write usage instructions
+```js
+import { hello } from "npm-github-package-example"
+hello("john"); // => "Hello, john"
+```
 
 ## Changelog
 
