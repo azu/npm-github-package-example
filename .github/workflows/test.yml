@@ -1,0 +1,21 @@
+name: test
+on: [push, pull_request]
+env:
+  CI: true
+jobs:
+  release:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install
+        run: |
+          npm install
+      - name: Test
+        run: npm test
