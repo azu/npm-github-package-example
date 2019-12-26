@@ -26,6 +26,6 @@ jobs:
       - name: npm-publish-with-git-tag
         uses: azu/action-npm-publish-with-git-tag@v1
         with:
-          github_token: ${{ GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
           git_commit_sha: ${{ github.sha }}
