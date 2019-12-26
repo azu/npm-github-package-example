@@ -10,6 +10,52 @@ This repository test for GitHub Workflow.
 2. [Manual] Push: `git push`
 3. [CI] Publish to npm and Push a tag to GitHub  
 
+This Release flow is defined in [.github/workflows/publish.yml](./.github/workflows/publish.yml)
+
+```yaml
+name: publish
+env:
+  CI: true
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "!*"
+jobs:
+  release:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: 'https://npm.pkg.github.com'
+      - name: install can-npm-publish and dependencies
+        run: |
+          npm install --global can-npm-publish
+          npm install
+      - name: test
+        run: npm test
+      # Publish to npm if this version is not published
+      - name: Publish
+        run: |
+          can-npm-publish --verbose && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Push tag to GitHub if the version's tag is not tagged
+      - name: package-version-to-git-tag
+        uses: azu/action-package-version-to-git-tag@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+
+```
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
