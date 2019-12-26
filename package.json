@@ -1,0 +1,68 @@
+{
+  "name": "npm-github-package-example",
+  "version": "1.0.0",
+  "description": "npm registry to GitHub Package Registry example.",
+  "keywords": [
+    "example",
+    "github",
+    "npm"
+  ],
+  "homepage": "https://github.com/azu/npm-github-package-example",
+  "bugs": {
+    "url": "https://github.com/azu/npm-github-package-example/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/npm-github-package-example.git"
+  },
+  "license": "MIT",
+  "author": "azu",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "clean": "rimraf lib/",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "prepublish": "npm run --if-present build",
+    "test": "mocha \"test/**/*.ts\"",
+    "watch": "tsc -p . --watch"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": false,
+    "tabWidth": 4
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^13.1.0",
+    "cross-env": "^6.0.3",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "ts-node-test-register": "^8.0.1",
+    "typescript": "^3.7.4"
+  }
+}
