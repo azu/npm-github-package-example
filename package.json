@@ -1,6 +1,6 @@
 {
   "name": "@azu/npm-github-package-example",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "npm registry to GitHub Package Registry example.",
   "keywords": [
     "example",
