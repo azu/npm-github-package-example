@@ -17,14 +17,13 @@ jobs:
         with:
           node-version: 12.x
           registry-url: 'https://npm.pkg.github.com'
-      - name: install can-npm-publish and dependencies
-        run: |
-          npm install --global can-npm-publish
-          npm install
+      - name: install
+        run: npm install
       - name: test
         run: npm test
-      - name: Publish
-        run: |
-          can-npm-publish --verbose && npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: npm-publish-with-git-tag
+        uses: azu/action-npm-publish-with-git-tag@v1
+        with:
+          GITHUB_TOKEN: ${{ GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+          GIT_COMMIT_SHA: ${{ github.sha }}
