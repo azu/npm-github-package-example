@@ -23,6 +23,8 @@ jobs:
           scope: '@azu'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN_NPM }}
+      - name: dump
+        run: cat .npmrc
       - name: install
         run: npm install
       - name: test
