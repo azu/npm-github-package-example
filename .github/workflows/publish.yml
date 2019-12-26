@@ -24,7 +24,7 @@ jobs:
       - name: test
         run: npm test
       - name: npm-publish-with-git-tag
-        uses: azu/action-npm-publish-with-git-tag@v1
+        uses: azu/action-npm-publish-with-git-tag@v1.0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
