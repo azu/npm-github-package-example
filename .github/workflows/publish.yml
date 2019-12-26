@@ -3,8 +3,10 @@ env:
   CI: true
 on:
   push:
+    branches:
+      - master
     tags:
-      - "*"
+      - "!*"
 jobs:
   release:
     name: Setup
