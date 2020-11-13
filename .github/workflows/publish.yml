@@ -31,7 +31,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Push tag to GitHub if the version's tag is not tagged
       - name: package-version-to-git-tag
-        uses: azu/github_tag_action_example@v1.1
+        uses: azu/github_tag_action_example@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
