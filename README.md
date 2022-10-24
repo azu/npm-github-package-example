@@ -28,11 +28,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16
           registry-url: 'https://npm.pkg.github.com'
       - name: install
         run: npm install
@@ -41,16 +41,18 @@ jobs:
       # Publish to npm if this version is not published
       - name: Publish
         run: |
-          npx can-npm-publish --verbose && npm publish || echo "Does not publish"
+          npx can-npm-publish --yes --verbose && npm publish || echo "Does not publish"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Push tag to GitHub if the version's tag is not tagged
       - name: package-version-to-git-tag
-        uses: azu/action-package-version-to-git-tag@v1
+        uses: pkgdeps/git-tag-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
+          version: ${{ env.PACKAGE_VERSION }}
           git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
 ```
 
 ## Install

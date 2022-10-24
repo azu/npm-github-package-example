@@ -64,9 +64,4 @@
     "ts-node": "^8.5.4",
     "ts-node-test-register": "^8.0.1",
     "typescript": "^3.7.4"
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com/"
-  }
-}
+  }}
